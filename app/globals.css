@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.form-container {
+  max-width: 35%;
+  margin: auto;
+  padding: 20px;
+  /* background-color: #fff; */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+/* Form title styling */
+.form-container h2 {
+  margin-top: 40px;
+  margin-bottom: 60px;
+  /* color: #8a857f; */
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+/* Input styling */
+.form-container input[type="email"],
+.form-container input[type="text"],
+.form-container input[type="password"] {
+  width: 85%;
+  padding: 12px;
+  margin: 8px;
+  margin-bottom: 3%;
+  /* border: 1px solid #ccc; */
+  /* background-color: #f6f6f6; */
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+/* Checkbox styling */
+.form-container label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+}
+label input[type='checkbox']{
+  margin-left: 30%;
+  margin-right: 1%;
+}
+
+/* Button styling */
+.form-container button {
+  width: 30%;
+  padding: 12px;
+  margin-top: 40px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Links styling */
+.form-container .links {
+  margin-top: 35px;
+  font-size: 14px;
+}
+
+.form-container .links a {
+  color: #848484;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.form-container .links a:hover {
+  text-decoration: underline;
+}

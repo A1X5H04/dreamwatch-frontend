@@ -1,0 +1,119 @@
+/* AnimePlatform.css */
+
+.anime-platform-container {
+  display: flex;
+  justify-content: center;
+  min-height: 90%;
+  max-width: 80%;
+  margin: 0 auto;
+  background-color: #e5ebf1;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.content-box {
+  background-color: #0d1c2d;
+  color: #fff;
+  border-radius: 16px;
+  padding: 60px 40px;
+  width: 100%;
+  max-width: 1200px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.subheading {
+  color: #acd5f2;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin: 0 auto 40px;
+  max-width: 600px;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Always 2 columns */
+  gap: 20px; /* Space between items */
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  /* For smaller screens, stack elements in a single column */
+  .features {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.feature {
+  display: flex;
+  align-items: flex-start;
+  background-color: #1a2b3c;
+  border-radius: 12px;
+  padding: 20px 20px;
+  text-align: left;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  margin-right: 20px;
+}
+
+.detail h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.detail p {
+  color: #acd5f2;
+  line-height: 1.6;
+}
+
+.join-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #3577ff;
+  border-radius: 30px;
+  box-shadow: 0 2px 40px rgba(0, 0, 0, 0.4);
+  height: 50px;
+  width: 200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  transition: box-shadow 0.4s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.join-btn:hover {
+  box-shadow: 0 4px 50px rgba(0, 0, 0, 0.6);
+  transform: translateY(-3px);
+}
+
+.label {
+  color: #f7fafc;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.circle {
+  background: #d9e6ff;
+  color: #3577ff;
+  font-size: 1.5rem;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg-icon {
+  width: 16px;
+  height: 16px;
+}

@@ -1,8 +1,8 @@
 .navbar {
     display: flex;
     align-items: center;
-    background-color: #171e50; /* Dark blue background */
-    padding: 15px 10%;
+    background-color: #14172a; /* Dark blue background */
+    padding: 1px 10%;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -11,11 +11,13 @@
     font-size: 24px;
     margin-right: auto;
     cursor: pointer;
+    margin-top: -1%;
+    margin-bottom: -1%;
 }
 
 /* Navigation links */
 .navbar a {
-    color: #cfcfcf;
+    color: #dbdbdb;
     text-decoration: none;
     margin: 0 25px;
     font-size: 18px;

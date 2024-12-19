@@ -1,0 +1,97 @@
+.main-layout {
+  height: 150vh;
+  box-sizing: border-box;
+}
+
+.header {
+  margin-left: 8%;
+  margin-right: 20%;
+}
+
+.banner-image {
+  width: 100%;
+  height: 40vh;
+  object-fit: cover;
+}
+
+.details {
+  background: rgb(var(--color-foreground));
+  position: relative;
+  
+}
+
+.detail {
+  box-sizing: border-box;
+  display: grid;
+  grid-column-gap: 30px;
+  grid-template-columns: 215px auto;
+}
+
+.cover-rap-overlay {
+  margin-top: -105px;
+}
+
+.cover-rap-inner {
+  position: static;
+  box-sizing: border-box;
+}
+
+.action {
+  display: grid;
+  grid-template-columns: auto 35px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  grid-gap: 15px;
+}
+
+.list {
+    align-items: center;
+    background: rgb(var(--color-blue));
+    border-radius: 3px;
+    color: rgb(var(--color-white));
+    cursor: pointer;
+    display: flex;
+    font-size: 1.4rem;
+    height: 35px;
+    justify-content: center;
+    line-height: 1.3rem;
+}
+
+.add {
+    background-color: rgb(42, 169, 227);
+    color: white;
+    font-size: medium;
+    font-weight: 460;
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: calc(100% - 34px);
+}
+
+.el-dropdown {
+    background: rgba(var(--color-white), .14);
+    border-radius: 0 3px 3px 0;
+    color: rgba(var(--color-white), .8);
+    width: 34px;
+    height: 100%;
+}
+
+
+
+
+
+.description {
+  font-size: 24px;
+  color: #444444;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  margin-left: 4vh;
+  object-fit: contain;
+  /* font-weight: 450; */
+}
+
+.description p {
+  margin-top: 12px;
+  font-size: small;
+}

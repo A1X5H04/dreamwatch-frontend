@@ -1,6 +1,7 @@
 'use client'
 import { useContext } from "react"
 import DisplayContext from "./State/Context"
+import Link from "next/link"
 
 export default function Login() {
     const display = useContext(DisplayContext)
@@ -25,8 +26,8 @@ export default function Login() {
                         <button type="submit">Login</button>
                         <div className="links flex flex-col" >
                             <a href="Forgot" className="mb-[17%]" >Forgot password?</a>
-                            <a href="Create">Not registered?
-                                <span className="text-blue-500">Create a new account</span></a>
+                            <Link href="/SignUp">Not registered?
+                                <span className="text-blue-500">Create a new account</span></Link>
                         </div>
                     </form>
                 </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import 'bootstrap/dist/css/bootstrap.css';
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar.jsx";
 import Footer from "@/components/Footer/Footer";

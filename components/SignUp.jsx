@@ -1,6 +1,7 @@
 'use client'
 import { useContext } from "react"
 import DisplayContext from "./State/Context"
+import Link from "next/link"
 
 export default function SignUp() {
     const display = useContext(DisplayContext)
@@ -30,9 +31,11 @@ export default function SignUp() {
                         <label>
                             <input type="checkbox" name='checkbox' required /> You agree to our terms of service
                         </label>
-                        <button type="submit"   >Sign up</button>
-                        <div className="links">
-                            <a href="#">Login</a> • <a href="#">Resend Verification Email</a>
+                        <button type="submit">Sign up</button>
+                        <div className="links ">
+                            <Link href="/login" className="hover:text-blue-600">Login</Link>
+                            <br />
+                            <Link href="#" className="hover:text-blue-600" >Resend Verification Email</Link>
                         </div>
                     </form>
                 </div>

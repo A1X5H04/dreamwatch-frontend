@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar.jsx";
 import Footer from "@/components/Footer/Footer";
 import { DisplayContextProvider } from "@/components/State/Context.jsx";
 import Section from "@/components/Section.jsx";
-
 
 export const metadata: Metadata = {
   title: "Dream Watch",
@@ -21,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <DisplayContextProvider>
-          <Section >
+          <Section>
             <Navbar />
             {children}
             <Footer />

@@ -15,8 +15,8 @@ export default function Login() {
     }
 
     return (
-            <div className="min-h-[90vh] my-24 ">
-                <div className={`form-container ${display.show ? "bg-slate-100" : "bg-slate-800"}`}>
+            <div className="min-h-[90vh] my-24">
+                <div className={`form-container ${display.show ? "bg-slate-100" : "bg-slate-800"} dark:bg-slate-800`}>
                     <h2 className={display.show ? "text-[#212529]" : "text-[#83a5be]"}>Login</h2>
                     <form onSubmit={handleSubmit}>
                         <input className={display.show ? "bg-slate-200" : "bg-slate-900"}

@@ -1,4 +1,4 @@
-import Search from '@/components/Navbar/SearchBtn';
+import Search from '@/components/HomePage/Navbar/SearchBtn';
 import './Navbar.css';
 import DMLogo from '@/public/Logo.png'
 import Image from 'next/image';

@@ -1,13 +1,15 @@
 'use client'
 import { useContext } from 'react';
 import './Footer.css';
-import DisplayContext from '../State/Context';
+import DisplayContext from '../../State/Context';
+import { useTheme } from 'next-themes';
 
 export default function Footer() {
+    const { setTheme } = useTheme()
     const display = useContext(DisplayContext)
 
     function backgroungLight() {
-        display.colorLight()
+        display.colorLight()    
     }
 
     function backgroundDark() {
@@ -20,9 +22,9 @@ export default function Footer() {
                 <p>Site Theme</p>
                 <div className="theme-options">
                     <button className='bg-slate-200 rounded' 
-                    onClick={backgroungLight}>A</button>
+                    onClick={() => setTheme("light") }>A</button>
                     <button className='bg-slate-800 rounded'
-                    onClick={backgroundDark}>A</button>
+                    onClick={() => setTheme("dark")}>A</button>
                 </div>
             </div>
             <div className="footer-section">

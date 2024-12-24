@@ -21,6 +21,7 @@ export async function GET(
         coverImage {
           extraLarge
           large
+          color
         }
         bannerImage
         format
@@ -30,6 +31,11 @@ export async function GET(
           year
           month
           day
+        }
+        endDate {
+          day
+          month
+          year
         }
         season
         averageScore
@@ -57,6 +63,12 @@ export async function GET(
         genres
         tags {
           name
+        }
+
+        trailer {
+          id
+          site
+          thumbnail
         }
 
         # Relations (Related Anime)

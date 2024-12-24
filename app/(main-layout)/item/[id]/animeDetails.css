@@ -1,0 +1,95 @@
+.anime-banner {
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+}
+
+.anime-header {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+  margin: 0 3% 0 9%;
+  /* background-color: white; */
+}
+
+.anime-info {
+  width: 1100px;
+  max-height: 65vh;
+  overflow: hidden;
+}
+
+.anime-details {
+  padding: 20px;
+}
+
+.anime-cover {
+  width: 200px;
+  height: 304px;
+  border-radius: 8px;
+  margin-top: -140px;
+}
+
+.anime-info h1 {
+  font-size: 23px;
+  margin-bottom: 20px;
+  font-weight: 400;
+  color: #868686;
+}
+
+.anime-info p {
+  font-weight: 500;
+  font-size: 14px;
+  color: #8a8a8ae8;
+}
+
+.anime-meta {
+  min-width: 230px;
+  padding: 20px;
+  height: fit-content;
+  background-color: #ffffff70;
+  margin-top: 20px;
+}
+
+.anime-meta p, ul {
+  font-size: 13px;
+  margin-bottom: 5px;  
+  margin-top: 2px;
+  margin-bottom: 15px;
+  color: #7e7e7e;
+  font-weight: 500;
+}
+
+.anime-meta strong {
+  color: #717171;
+}
+
+.anime-characters,
+.anime-recommendations {
+  margin-top: 30px;
+}
+
+.character-list,
+.recommendation-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.character-item,
+.rec-item {
+  text-align: center;
+  max-width: 126px;
+}
+
+.character-item img,
+.rec-item img {
+  border-radius: 8px;
+  width: 120px;
+  height: 160px;
+  object-fit: cover;
+}
+
+.character-role {
+  font-style: italic;
+  font-size: 14px;
+}

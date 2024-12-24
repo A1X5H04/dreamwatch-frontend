@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { gql, request } from "graphql-request";
 
 export async function GET() {
@@ -18,7 +18,8 @@ export async function GET() {
             day
           }
           coverImage {
-            large
+            extraLarge
+            color
           }
           genres
           popularity
@@ -50,7 +51,8 @@ export async function GET() {
             day
           }
           coverImage {
-            large
+            extraLarge
+            color
           }
           genres
           popularity
@@ -82,7 +84,8 @@ export async function GET() {
             day
           }
           coverImage {
-            large
+            extraLarge
+            color
           }
           genres
           popularity
@@ -109,7 +112,8 @@ export async function GET() {
             day
           }
           coverImage {
-            large
+            extraLarge
+            color
           }
           genres
           popularity
@@ -136,7 +140,8 @@ export async function GET() {
             day
           }
           coverImage {
-            large
+            extraLarge
+            color
           }
           genres
           popularity

@@ -1,0 +1,45 @@
+.read-more-container {
+    position: relative;
+    max-width: 1200px; /* Adjust as needed */
+    margin: 0 auto;
+  }
+  
+  .text {
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .text.collapsed {
+    max-height: 150px; /* Height when collapsed */
+  }
+  
+  .text.expanded {
+    max-height: none; /* Fully expanded */
+  }
+  
+  .fade-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px; /* Height of the fade */
+    /* background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(229 235 241)); */
+    pointer-events: none;
+  
+  }
+  
+  .read-more-button {
+    display: block;
+    margin: 10px auto;
+    background: none;
+    border: none;
+    color: #807f8ebb;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .read-more-button:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from "react";
-import "./fadeReadMore.css";
+import "./ReadMore.css";
 
 interface ReadMoreProps {
   children: ReactNode;

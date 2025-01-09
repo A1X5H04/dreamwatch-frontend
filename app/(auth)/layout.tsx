@@ -11,8 +11,8 @@ interface AuthLayoutProps {
 
 function AuthLayout({ children }: AuthLayoutProps) {
   return (
-    <main className="w-full h-screen grid place-items-center bg-black">
-      <div className="flex p-4 gap-x-2 bg-white w-full max-w-5xl rounded-[2.5rem]">
+    <main className="w-full h-screen grid place-items-center">
+      <div className="flex p-4 gap-x-2 bg-neutral w-full max-w-7xl rounded-[2.5rem]">
         <section className="flex-1">{children}</section>
         <section className="flex-1">
           <Image

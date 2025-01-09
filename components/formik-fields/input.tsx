@@ -1,35 +1,55 @@
 import { FieldProps } from "formik";
-import { Form, Input, InputProps } from "rsuite";
+import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-interface FormikInputFieldProps extends InputProps {
+interface FormikInputFieldProps extends ComponentProps<"input"> {
   label: string;
   helperText?: string;
 }
 
 const FormikInputField: React.FC<FormikInputFieldProps & FieldProps> = ({
   field, // destructured FieldProps.field
-  form: { setFieldValue, errors }, // destructured FieldProps.form
+  form: { errors, touched }, // destructured FieldProps.form
   label,
   helperText,
   className,
   ...props // other props passed to the input
-}) => (
-  <Form.Group controlId={field.name}>
-    <Form.ControlLabel htmlFor={field.name}>{label}</Form.ControlLabel>
-    <Input
-      className={twMerge("form-input", className)}
-      onChange={(value) => setFieldValue(field.name, value)}
-      {...props}
-    />
-    {helperText && <Form.HelpText className="mt-1">{helperText}</Form.HelpText>}
-    <Form.ErrorMessage
-      show={Boolean(errors[field.name])}
-      placement="bottomStart"
-    >
-      {errors[field.name] as string}
-    </Form.ErrorMessage>
-  </Form.Group>
-);
+}) => {
+  const hasError = errors[field.name] && touched[field.name];
+
+  return (
+    <div className="form-control w-full">
+      <label htmlFor={field.name} className="label">
+        <span className="label-text">
+          {label}
+          {props.required && <span className="text-error ml-1">*</span>}
+        </span>
+      </label>
+      <input
+        id={field.name}
+        className={twMerge(
+          "input input-bordered w-full",
+          hasError && "input-error",
+          className
+        )}
+        {...props}
+        {...field}
+      />
+      {hasError && (
+        <div className="label text-error pb-0">
+          <span className="label-text-alt uppercase text-error">
+            {errors[field.name] as string}
+          </span>
+        </div>
+      )}
+      {helperText && (
+        <div className="label">
+          <span className="label-text-alt">{helperText}</span>
+          {/* <span className="label-text-alt">Bottom Right label</span> */}
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default FormikInputField;

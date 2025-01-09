@@ -7,11 +7,15 @@ export default {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+
   theme: {
     extend: {
       colors: {
         grape: "rgba(var(--grape))",
       },
+    },
+    daisyui: {
+      themes: ["light", "dark"],
     },
   },
   plugins: [DaisyUI],

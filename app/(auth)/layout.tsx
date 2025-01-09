@@ -1,5 +1,8 @@
 import Image from "next/image";
-import AnimeAuthBG from "@/public/auth-anime_bg.jpg";
+// import AnimeAuthBG from "@/public/cat-anime.webp";
+// import AnimeAuthBG from "@/public/cat-cute.webp";
+// import AnimeAuthBG from "@/public/cartoon-cat.webp";
+import AnimeAuthBG from "@/public/your-name (1).jpg";
 import React, { ReactNode } from "react";
 
 interface AuthLayoutProps {

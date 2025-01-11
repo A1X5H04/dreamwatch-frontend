@@ -1,5 +1,5 @@
 import { PrismaLibSQL } from "@prisma/adapter-libsql";
-import { createClient } from "@libsql/client";
+import { createClient } from "@libsql/client/web";
 import { PrismaClient } from "@prisma/client";
 
 // CREDIT: https://github.com/North-Hess/StickyNotes/blob/main/src/app/server/db.ts

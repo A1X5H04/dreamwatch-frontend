@@ -9,6 +9,10 @@ import { Field, Form, Formik } from "formik";
 import FormikInputField from "@/components/formik-fields/input";
 import OAuthProvider from "../_components/oauth-provider";
 import { InferYupType, signInSchema } from "@/lib/yup-schemas";
+import { signIn } from "@/action/auth";
+import { useRouter } from "next/navigation";
+import { useMutation } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 const initialValues: InferYupType<typeof signInSchema> = {
   login: "",
@@ -16,6 +20,28 @@ const initialValues: InferYupType<typeof signInSchema> = {
 };
 
 function SignInPage() {
+  const router = useRouter();
+  const { isPending, mutate } = useMutation<
+    Awaited<ReturnType<typeof signIn>>,
+    Error,
+    InferYupType<typeof signInSchema>
+  >({
+    mutationKey: ["signUp"],
+    mutationFn: (values) => signIn(values),
+    onError: (error) => {
+      console.log("Auth: Sign Up", error);
+      toast.error("An error occurred. Please try again later");
+    },
+    onSuccess: (data) => {
+      if (data.status) {
+        router.replace("/");
+        return toast.success(data.message || "Account created successfully");
+      } else {
+        return toast.error(data.message || "Something went wrong.");
+      }
+    },
+  });
+
   return (
     <div className="p-10">
       <div className="mb-6">
@@ -28,7 +54,7 @@ function SignInPage() {
       <div>
         <Formik
           validationSchema={signInSchema}
-          onSubmit={(values) => alert(JSON.stringify(values))}
+          onSubmit={(values) => mutate(values)}
           initialValues={initialValues}
         >
           <Form>
@@ -36,7 +62,7 @@ function SignInPage() {
               <Field
                 name="login"
                 label="Email Address / Username"
-                placeholder="whateveryoulike123"
+                placeholder="user@example.com"
                 required
                 component={FormikInputField}
               />
@@ -44,17 +70,18 @@ function SignInPage() {
                 name="password"
                 label="Password"
                 type="password"
-                placeholder="**********"
-                helperText="Password must be at least 8 characters long"
+                placeholder="******"
+                helperText="Password must be at least 6 characters long"
                 required
                 component={FormikInputField}
               />
             </div>
-            <button
-              type="submit"
-              className="btn btn-primary w-full mt-5 cursor-not-allowed"
-            >
-              <span className="loading loading-dots"></span>
+            <button type="submit" className="btn btn-primary w-full mt-5">
+              {isPending ? (
+                <span className="loading loading-dots"></span>
+              ) : (
+                "Sign In"
+              )}
             </button>
           </Form>
         </Formik>

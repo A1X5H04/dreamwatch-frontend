@@ -44,10 +44,6 @@
   grid-gap: 20px;
   justify-items: center;
 }
-.trending-grid :hover p {
-  /* color: var(--hover-color); */
-  color: black;
-}
 
 .trending-item {
   --hover-color: red;
@@ -124,4 +120,3 @@
   font-weight: 500;
   color: #555;
 }
-

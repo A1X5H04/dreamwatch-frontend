@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import DropNavbar from "./DropNavbar.jsx";
 import user from "@/public/149071.png";
-import DropDown from "./DropDown";
+import { FaSearch } from "react-icons/fa";
 
 export default function Navbar() {
   return (
@@ -27,18 +27,9 @@ export default function Navbar() {
           Anime
         </Link>
         <Link href="/social">Movies</Link>
-        <span className="py-2 px-3 rounded-full bg-slate-800 m-1 hover:cursor-pointer">
-          <svg
-            className=""
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 16 16"
-            fill="white"
-          >
-            <path d="m11.271 11.978l3.872 3.873a.5.5 0 0 0 .708 0a.5.5 0 0 0 0-.708l-3.565-3.564c2.38-2.747 2.267-6.923-.342-9.532c-2.73-2.73-7.17-2.73-9.898 0s-2.728 7.17 0 9.9a6.96 6.96 0 0 0 4.949 2.05a.5.5 0 0 0 0-1a5.96 5.96 0 0 1-4.242-1.757a6.01 6.01 0 0 1 0-8.486a6.004 6.004 0 0 1 8.484 0a6.01 6.01 0 0 1 0 8.486a.5.5 0 0 0 .034.738" />
-          </svg>
-        </span>
+        <button className="btn btn-square btn-sm">
+          <FaSearch />
+        </button>
       </div>
 
       <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
@@ -61,7 +52,7 @@ export default function Navbar() {
                 height="24"
                 viewBox="0 0 24 24"
               >
-                <g fill="none" stroke="currentColor" stroke-width="1.5">
+                <g fill="none" stroke="currentColor" strokeWidth="1.5">
                   <circle cx="12" cy="6" r="4" />
                   <path d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5Z" />
                 </g>

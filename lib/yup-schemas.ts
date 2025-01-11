@@ -15,7 +15,7 @@ const signInSchema = Yup.object().shape({
       }
     )
     .min(8, "Must be at least 8 characters long"),
-  password: Yup.string().required(),
+  password: Yup.string().required().min(6),
 });
 
 const signUpSchema = Yup.object().shape({
@@ -24,7 +24,7 @@ const signUpSchema = Yup.object().shape({
     .required()
     .matches(/^[A-Za-z][A-Za-z0-9_-]*$/, "Invalid username")
     .min(8), // Do not add spaces
-  password: Yup.string().required(),
+  password: Yup.string().required().min(6),
 });
 
 export { signInSchema, signUpSchema };

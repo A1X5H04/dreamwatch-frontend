@@ -2,7 +2,7 @@
 .trending-container {
   margin: 20px auto;
   padding: 0 20px;
-  width: 80%;
+  width: 90%;
 }
 
 /* Header Section */
@@ -35,10 +35,15 @@
 
 /* Grid Layout for Anime Cards */
 .trending-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
-  justify-items: center;
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping of items */
+  justify-content: center; /* Centers items horizontally */
+  gap: 25px; /* Adds space between items */
+}
+
+.trending-grid > * {
+  flex: 1 1 180px; /* Flexible items with a minimum width of 180px */
+  max-width: 200px; /* Optional: Restrict maximum width */
 }
 
 .trending-grid:hover p {

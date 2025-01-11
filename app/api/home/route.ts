@@ -29,6 +29,7 @@ export async function GET() {
             }
           }
           format
+          bannerImage
         }
       }
 
@@ -62,6 +63,7 @@ export async function GET() {
             }
           }
           format
+          bannerImage
         }
       }
 
@@ -95,6 +97,7 @@ export async function GET() {
             }
           }
           format
+          bannerImage
         }
       }
 
@@ -123,6 +126,7 @@ export async function GET() {
             }
           }
           format
+          bannerImage
         }
       }
 
@@ -154,12 +158,16 @@ export async function GET() {
           status
           episodes
           averageScore
+          bannerImage
         }
       }
     }
   `;
 
   const data = await request("https://graphql.anilist.co", query);
+  if(!data){
+    throw new Error("Failed to fetch data from GraphQL API");
+  }
 
   return NextResponse.json({ data });
 }

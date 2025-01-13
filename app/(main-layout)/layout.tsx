@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import Navbar from "@/components/HomePage/Navbar/Navbar.jsx";
-import Footer from "@/components/HomePage/Footer/Footer";
 import { DisplayContextProvider } from "@/components/State/Context.jsx";
 import Section from "@/components/Section.jsx";
 
@@ -14,7 +13,6 @@ function MainLayout({ children }: MainLayoutProps) {
       <Section>
         <Navbar />
         {children}
-        <Footer />
       </Section>
     </DisplayContextProvider>
   );

@@ -24,3 +24,4 @@ export function HexToRGBA(value: string, alpha: number = 1) {
   const b = parseInt(hex.substring(4, 6), 16);
 
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}

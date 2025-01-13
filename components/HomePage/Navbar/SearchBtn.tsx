@@ -27,22 +27,22 @@ export default function SearchBtn() {
           <motion.div
             animate={{
               // @todo: here I want to remove the width
-              width: isOpen ? "280px" : "200px",
+              width: isOpen ? "450px" : "200px",
             }}
             initial={false}
           >
             <div className="">
               {!isOpen ? (
-                <div className="flex space-x-4 bg-[#f2f2f2] p-3 pl-5 pr-2 rounded-3xl my-1">
+                <div className="flex justify-between items-center bg-[#f2f2f2] rounded-3xl">
                   <Link
                     href="/search"
-                    className="text-slate-500 font-semibold p-2 hover:bg-slate-200 hover:rounded-2xl"
+                    className="my-1 ml-2 p-2 text-slate-500 font-semibold rounded-2xl hover:bg-slate-200"
                   >
                     Anime
                   </Link>
                   <Link
                     href="/social"
-                    className="text-slate-500 font-semibold p-2 hover:bg-slate-200 hover:rounded-2xl"
+                    className="my-1 p-2 text-slate-500 font-semibold rounded-2xl hover:bg-slate-200"
                   >
                     Movies
                   </Link>
@@ -57,21 +57,21 @@ export default function SearchBtn() {
                   </div>
                 </div>
               ) : (
-                <div className="flex bg-[#f2f2f2] p-4 rounded-3xl">
+                <div className="flex bg-[#f2f2f2] rounded-3xl">
                   <div className="w-full">
                     <input
                       type="text"
                       placeholder="Type here"
-                      className="bg-[#f2f2f2] input input-bordered w-full h-14 text-xl"
+                      className="bg-[#f2f2f2] input input-bordered w-full text-base"
                     />
-                    <div className="right-1 top-0 flex h-full items-center justify-center"></div>
+                    {/* <div className="right-1 top-0 flex h-full items-center justify-center"></div> */}
                   </div>
                   <button
-                    className="btn btn-square h-14 ml-2"
+                    className="ml-1 hover:bg-zinc-200 btn btn-square btn-md"
                     onClick={() => setIsOpen(false)}
                     aria-label="Back"
                   >
-                    <ArrowRight className="size-7" />
+                    <ArrowRight className="size-5" />
                   </button>
                 </div>
               )}

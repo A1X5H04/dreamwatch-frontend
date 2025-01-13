@@ -29,14 +29,17 @@ function SignInPage() {
     mutationKey: ["signUp"],
     mutationFn: (values) => signIn(values),
     onError: (error) => {
-      console.log("Auth: Sign Up", error);
+      console.log("Auth: SignIn", error);
       toast.error("An error occurred. Please try again later");
     },
     onSuccess: (data) => {
+      console.log("SignIn: On Success Data", data);
       if (data.status) {
         router.replace("/");
+        console.log("SignIn: On Success Data", data);
         return toast.success(data.message || "Account created successfully");
       } else {
+        console.log("SignIn: On Success Data", data);
         return toast.error(data.message || "Something went wrong.");
       }
     },

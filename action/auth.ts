@@ -29,7 +29,6 @@ export async function signIn(values: unknown) {
     await authSignIn("credentials", {
       login,
       password,
-      redirect: false,
     });
 
     return createResponse(true, "Signed in successfully");
@@ -41,7 +40,7 @@ export async function signIn(values: unknown) {
       console.log("Auth: AuthJS Error Sign In", err);
       switch (err.type) {
         case "CredentialsSignin":
-          return createResponse(false, err.message || "Invalid credentials");
+          return createResponse(false, "Invalid credentials");
         default:
           return createResponse(
             false,

@@ -142,6 +142,8 @@ export default function AnimeDetails() {
           <Image
             src={anime.coverImage.extraLarge}
             alt={anime.title.romaji}
+            height={450}
+            width={300}
             className="anime-cover"
           />
           <div className="anime-info">

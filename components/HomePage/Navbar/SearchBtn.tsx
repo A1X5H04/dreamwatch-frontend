@@ -1,12 +1,13 @@
-'use client';
-import React, { useRef, useState } from 'react';
-import { motion, MotionConfig } from 'motion/react';
-import useClickOutside from '@/hooks/useClickOutside';
-import { ArrowRight, Search } from 'lucide-react';
-import Link from 'next/link';
+"use client";
+import React, { useRef, useState } from "react";
+import { motion, MotionConfig } from "motion/react";
+import useClickOutside from "@/hooks/useClickOutside";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { FaSearch } from "react-icons/fa";
 
 const transition = {
-  type: 'spring',
+  type: "spring",
   bounce: 0.1,
   duration: 0.2,
 };
@@ -21,55 +22,57 @@ export default function SearchBtn() {
 
   return (
     <MotionConfig transition={transition}>
-      <div className='' ref={containerRef}>
-        <div className='h-full w-full rounded-2xl border border-zinc-950/10 bg-white'>
+      <div className="" ref={containerRef}>
+        <div className="">
           <motion.div
             animate={{
               // @todo: here I want to remove the width
-              width: isOpen ? '300px' : '220px',
+              width: isOpen ? "280px" : "200px",
             }}
             initial={false}
           >
-            <div className='overflow-hidden p-2'>
+            <div className="">
               {!isOpen ? (
-                <div className='flex justify-around'>
-                  {/* <User className='h-5 w-5' /> */}
-                  <div className="nav-menu">
-                    <Link href="/search" className="ml-2 ">
-                      <span className='relative flex px-3 py-2 shrink-0 scale-100 select-none appearance-none items-center justify-start rounded-lg text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-800 focus-visible:ring-2 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50'
-                      >Anime</span>
-                    </Link>
-                    <Link href="/social">
-                      <span className='relative flex px-3 py-2 shrink-0 scale-100 select-none appearance-none items-center justify-start rounded-lg text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-800 focus-visible:ring-2 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50'
-                      >Movies</span>
-                    </Link>
-                  </div>
-                  <div className=''>
-                    <button className='btn btn-square btn-md mr-2'
+                <div className="flex space-x-4 bg-[#f2f2f2] p-3 pl-5 pr-2 rounded-3xl my-1">
+                  <Link
+                    href="/search"
+                    className="text-slate-500 font-semibold p-2 hover:bg-slate-200 hover:rounded-2xl"
+                  >
+                    Anime
+                  </Link>
+                  <Link
+                    href="/social"
+                    className="text-slate-500 font-semibold p-2 hover:bg-slate-200 hover:rounded-2xl"
+                  >
+                    Movies
+                  </Link>
+                  <div className="">
+                    <button
+                      className="p-4 hover:bg-slate-200 rounded-full"
                       onClick={() => setIsOpen(true)}
-                      aria-label='Search notes'
+                      aria-label="Search notes"
                     >
-                      <Search className='w-6 h-6' />
+                      <FaSearch className="size-[14px] text-slate-500" />
                     </button>
                   </div>
                 </div>
               ) : (
-                <div className='flex'>
-                  <div className='relative w-full h-6'>
+                <div className="flex bg-[#f2f2f2] p-4 rounded-3xl">
+                  <div className="w-full">
                     <input
                       type="text"
                       placeholder="Type here"
-                      className="input input-bordered -mt-2 w-full h-9" />
-                    <div className='absolute right-1 top-0 flex h-full items-center justify-center'></div>
+                      className="bg-[#f2f2f2] input input-bordered w-full h-14 text-xl"
+                    />
+                    <div className="right-1 top-0 flex h-full items-center justify-center"></div>
                   </div>
-                  <button className='btn btn-square btn-sm'
-                      onClick={() => setIsOpen(false)} 
-                      aria-label='Back'
-                    >
-                    <ArrowRight className='h-5 w-5' />
-                      
-                    </button>
-                  
+                  <button
+                    className="btn btn-square h-14 ml-2"
+                    onClick={() => setIsOpen(false)}
+                    aria-label="Back"
+                  >
+                    <ArrowRight className="size-7" />
+                  </button>
                 </div>
               )}
             </div>

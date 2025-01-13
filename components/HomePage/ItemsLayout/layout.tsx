@@ -44,7 +44,7 @@ interface DisplayAnimeProps {
 }
 
 const DisplayAnime: React.FC<DisplayAnimeProps> = ({ topic, name }) => {
-  const [trendingAnime, setTrendingAnime] = useState<Media[]>([]);
+  const [Anime, setAnime] = useState<Media[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const DisplayAnime: React.FC<DisplayAnimeProps> = ({ topic, name }) => {
       try {
         const response = await fetch("/api/home");
         const json: ApiResponse = await response.json();
-        setTrendingAnime(json.data[name].media.slice(0, 6) || []);
+        setAnime(json.data[name].media.slice(0, 6) || []); 
       } catch (error) {
         console.error("Error fetching anime data:", error);
       } finally {
@@ -67,8 +67,7 @@ const DisplayAnime: React.FC<DisplayAnimeProps> = ({ topic, name }) => {
   if (loading) {
     return (
       <div className="loading-container">
-        <div className="spinner"></div>
-        <p>Loading...</p>
+        <span className='text-slate-400 text-xl'>Loading....</span>
       </div>
     );
   }
@@ -111,6 +110,11 @@ const DisplayAnime: React.FC<DisplayAnimeProps> = ({ topic, name }) => {
             </div>
 
             {/* <div className="trending-item-wrapper w-52">
+      <div className="trending-grid">
+        {Anime.map((anime) => (
+          // <Link href={`/itemDetail/${anime.id}`} key={anime.id}>
+          <Link href={`/item/${anime.id}`} key={anime.id}>
+            <div className="trending-item-wrapper mb-10">
               <div
                 className="trending-item"
                 style={

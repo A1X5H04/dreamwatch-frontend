@@ -5,6 +5,7 @@ import "./animeDetails.css";
 import ReadMore from "@/components/Read/ReadMore";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import Image from "next/image";
 
 type AnimeDetail = {
   id: number;
@@ -138,7 +139,7 @@ export default function AnimeDetails() {
           </div>
         )}
         <div className="anime-header mt-4">
-          <img
+          <Image
             src={anime.coverImage.extraLarge}
             alt={anime.title.romaji}
             className="anime-cover"

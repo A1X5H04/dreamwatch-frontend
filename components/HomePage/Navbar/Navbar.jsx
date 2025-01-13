@@ -5,6 +5,8 @@ import Link from "next/link";
 import DropNavbar from "./DropNavbar.jsx";
 import user from "@/public/149071.png";
 import { FaSearch } from "react-icons/fa";
+// import user from "@/public/File4.png";
+import SearchBtn from "./SearchBtn";
 
 export default function Navbar() {
   return (
@@ -12,13 +14,7 @@ export default function Navbar() {
       {/* <div className="navbar"> */}
       <div className="logo">
         <Link href="/">
-          <Image
-            width={45}
-            height={45}
-            className=""
-            src={DMLogo}
-            alt="DW-Logo"
-          />
+          <Image width={45} height={45} className="" src={DMLogo} alt="DW-Logo" />
         </Link>
         {/* <span>DREAM <br /> WATCH</span> */}
       </div>
@@ -30,11 +26,14 @@ export default function Navbar() {
         <button className="btn btn-square btn-sm">
           <FaSearch />
         </button>
+
+      <div className="btn px-7 h-[38px]">
+        <span className="text-slate-500 hover:text-slate-800 text-2xl">Login</span>
       </div>
 
-      <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
+      {/* <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
         <div tabIndex={0} role="button" className="m-1 flex">
-          <Image src={user} alt="user-image" width={40} height={40} />
+          <Image src={user} alt="user-image" width={50} height={50} />
           <span className="capitalize mb-1 text-black font-semibold">
             User 1
           </span>
@@ -79,7 +78,7 @@ export default function Navbar() {
             </span>
           </li>
         </ul>
-      </div>
+      </div> */}
 
       {/* </div> */}
     </DropNavbar>

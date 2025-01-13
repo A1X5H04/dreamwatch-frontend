@@ -1,17 +1,11 @@
-:root {
-}
-
+/* General Container Styling */
 .trending-container {
-  width: 95%;
-  margin: 0 auto;
-  background-color: #f8f9fa;
-  box-sizing: border-box;
-  padding-top: 50px;
-  padding-left: 10%;
-  padding-right: 10%;
-  background-color: rgb(229 235 241);
+  margin: 20px auto;
+  padding: 0 20px;
+  width: 90%;
 }
 
+/* Header Section */
 .trending-header {
   display: flex;
   justify-content: space-between;
@@ -20,41 +14,47 @@
 }
 
 .trending-header h2 {
-  font-size: 17px;
+  font-size: 1.2rem;
   text-transform: uppercase;
   margin: 0;
-  font-weight: 630;
-  color: #707070;
+  font-weight: 600;
+  color: #555;
 }
 
 .trending-header .view-all {
-  font-size: 16px;
+  font-size: 1rem;
   text-decoration: none;
-  color: #9f9f9f;
-  font-weight: 640;
+  color: #777;
+  font-weight: 600;
 }
 
 .trending-header .view-all:hover {
-  color: #838383;
+  color: #555;
+  text-decoration: underline;
 }
 
+/* Grid Layout for Anime Cards */
 .trending-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(180px, 1fr));
-  grid-gap: 20px;
-  justify-items: center;
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping of items */
+  justify-content: center; /* Centers items horizontally */
+  gap: 25px; /* Adds space between items */
 }
 
+.trending-grid > * {
+  flex: 1 1 180px; /* Flexible items with a minimum width of 180px */
+  max-width: 200px; /* Optional: Restrict maximum width */
+}
+
+/* Anime Card Styling */
 .trending-item {
-  --hover-color: red;
+  --hover-color: #ffebcc;
   text-align: center;
-  margin-top: auto;
   border-radius: 8px;
   min-height: 18rem;
-  /* overflow: hidden; */
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .trending-item:hover {
@@ -63,24 +63,26 @@
   background-color: var(--hover-color);
 }
 
+/* Anime Card Image */
 .item-image {
+  display: block;
   width: 100%;
-  height: 270px;
-  cursor: pointer;
-  display: inline-block;
-  overflow: hidden;
-  position: relative;
-  border-radius: 5px 5px 0 0;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
 }
 
+/* Anime Title */
 .item-title {
   padding: 10px;
-  font-size: 14px;
-  color: gray;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+  height: 3.5rem;
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
-  font-weight: 600;
 }
 
 /* Loader Container */
@@ -90,10 +92,10 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #f4f4f4;
+  background-color: #e5ebf1;
 }
 
-/* Spinner */
+/* Spinner Animation */
 .spinner {
   width: 50px;
   height: 50px;
@@ -104,12 +106,8 @@
   margin-bottom: 10px;
 }
 
-/* Spinner Animation */
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
+  to {
     transform: rotate(360deg);
   }
 }
@@ -119,4 +117,5 @@
   font-size: 1.2rem;
   font-weight: 500;
   color: #555;
+  margin-top: 10px;
 }

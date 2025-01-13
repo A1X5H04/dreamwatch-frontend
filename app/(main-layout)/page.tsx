@@ -1,11 +1,18 @@
 import React from "react";
 import DisplayAnime from "@/components/HomePage/ItemsLayout/layout";
+import SlideShow from "@/components/HomePage/ItemsLayout/SlideShow/js/SlideShow";
+import BannerAnime from "@/components/HomePage/ItemsLayout/BannerAnime";
 import { auth } from "@/auth";
 
 async function HomePage() {
   const session = await auth();
-
   return (
+    <>
+    <div className="">
+      <SlideShow />
+      {/* <BannerAnime /> */}
+
+    </div>
     <div className="min-h-[100vh]">
       {JSON.stringify(session)}
 
@@ -22,6 +29,7 @@ async function HomePage() {
         <DisplayAnime topic="All-Time Popular Anime" name="allTimePopular" />
       </div>
     </div>
+    </>
   );
 }
 

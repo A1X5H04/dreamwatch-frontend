@@ -5,7 +5,7 @@ export async function GET() {
   const query = gql`
     query {
       # Trending Anime
-      trending: Page(perPage: 5) {
+      trending: Page(perPage: 6) {
         media(sort: TRENDING_DESC, type: ANIME) {
           id
           title {
@@ -29,11 +29,12 @@ export async function GET() {
             }
           }
           format
+          bannerImage
         }
       }
 
       # Popular This Season Anime
-      popularThisSeason: Page(perPage: 5) {
+      popularThisSeason: Page(perPage: 6) {
         media(
           sort: POPULARITY_DESC
           season: WINTER
@@ -62,11 +63,12 @@ export async function GET() {
             }
           }
           format
+          bannerImage
         }
       }
 
       # Upcoming Next Season Anime
-      upcomingNextSeason: Page(perPage: 5) {
+      upcomingNextSeason: Page(perPage: 6) {
         media(
           sort: POPULARITY_DESC
           season: SPRING
@@ -95,11 +97,12 @@ export async function GET() {
             }
           }
           format
+          bannerImage
         }
       }
 
       # All-Time Popular Anime
-      allTimePopular: Page(perPage: 5) {
+      allTimePopular: Page(perPage: 6) {
         media(sort: POPULARITY_DESC, type: ANIME) {
           id
           title {
@@ -123,6 +126,7 @@ export async function GET() {
             }
           }
           format
+          bannerImage
         }
       }
 
@@ -154,12 +158,16 @@ export async function GET() {
           status
           episodes
           averageScore
+          bannerImage
         }
       }
     }
   `;
 
   const data = await request("https://graphql.anilist.co", query);
+  if(!data){
+    throw new Error("Failed to fetch data from GraphQL API");
+  }
 
   return NextResponse.json({ data });
 }

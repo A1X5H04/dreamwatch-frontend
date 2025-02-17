@@ -16,8 +16,8 @@ export default function Navbar() {
         <div>
           <SearchBtn />
         </div>
-        <div className="hover:bg-lime-200 btn px-7">
-          <span className="text-slate-500 text-lg">Login</span>
+        <div className="hover:bg-lime-200 btn px-6">
+          <span className="text-slate-500 text-base">Login</span>
         </div>
     </DropNavbar>
   );

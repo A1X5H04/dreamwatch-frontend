@@ -1,11 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useEffect, useState } from "react";
-import "./animeDetails.css";
-import ReadMore from "@/components/Read/ReadMore";
-import Link from "next/link";
+
 import { useParams } from "next/navigation";
+import { FaPlay } from "react-icons/fa";
+import { Scrollbar } from 'react-scrollbars-custom';
+
+import Link from "next/link";
 import Image from "next/image";
+import ReadMore from "@/components/Read/ReadMore";
+import Noimage from '@/public/no-image.png'
+import VideoModal from "@/components/VideoModel";
+
+import "./animeDetails.css";
 
 type AnimeDetail = {
   id: number;
@@ -78,6 +85,8 @@ type AnimeDetail = {
 export default function AnimeDetails() {
   const [anime, setAnime] = useState<AnimeDetail | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const ref = useRef<HTMLDialogElement>(null);
   const [showAllCharater, setShowAllCharacter] = useState(false);
   const [showAllAnime, setShowAllAnime] = useState(false);
 
@@ -90,6 +99,14 @@ export default function AnimeDetails() {
   function showAnime() {
     setShowAllAnime((prev) => !prev);
   }
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   // const router = useRouter();
   const params = useParams();
@@ -126,48 +143,111 @@ export default function AnimeDetails() {
   }
 
   return (
-    <>
-      <div className="bg-white">
+    <div className="-mt-[82px]">
+      <div className="bg-whit">
         {anime.bannerImage ? (
           <div
-            className="anime-banner"
-            style={{ backgroundImage: `url(${anime.bannerImage})` }}
-          ></div>
-        ) : (
-          <div className="h-[200px] w-[100%] text-gray-400 text-center content-center">
-            <span className="font-semibold text-xl">NO IMAGE</span>
-          </div>
-        )}
-        <div className="anime-header mt-4">
-          <Image
-            src={anime.coverImage.extraLarge}
-            alt={anime.title.romaji}
-            height={450}
-            width={300}
-            className="anime-cover"
-          />
-          <div className="anime-info">
-            <div className="w-[900px]">
-              <h1>{anime.title.romaji}</h1>
-              {anime.description.length > 627 ? (
-                <ReadMore>
-                  {" "}
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: anime.description,
-                    }}
-                  ></p>
-                </ReadMore>
-              ) : (
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: anime.description,
-                  }}
-                ></p>
-              )}
+            className="anime-banner rounded-bl-[150px]"
+            style={{ backgroundImage: `linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(36,36,47,0.75) 40%, rgba(255,255,255,0.1) 100%), url(${anime.bannerImage})` }}
+          >
+            <div className="anime-header">
+              {/* Anime Card */}
+              <div className="shrink-0 relative card anime-cover cursor-pointer group">
+                <Image
+                  src={anime.coverImage.extraLarge}
+                  alt={anime.title.romaji}
+                  height={450}
+                  width={300}
+                  className="object-cover h-[300px] rounded-lg"
+                />
+                {anime.trailer ?
+                  <div
+                    className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    onClick={handleOpenModal} // Open modal on click
+                  >
+                    <FaPlay className="text-white text-4xl" />
+                  </div>
+                  : ""}
+              </div>
+
+              {anime.trailer ?
+                <VideoModal
+                  isOpen={isModalOpen}
+                  videoUrl={`https://www.youtube.com/embed/${anime.trailer.id}?si=IO2c-CyPBFU1HhFf`} // Replace with your anime's video URL
+                  onClose={handleCloseModal}
+                />
+                : null}
+
+              <div className="anime-info">
+                <div className="w-[700px]">
+                  <h1>{anime.title.english || anime.title.romaji}</h1>
+                  {/* {anime.description.length > 627 ? (
+                    <ReadMore>
+                      {" "}
+                      <p
+                        dangerouslySetInnerHTML={{
+                          __html: anime.description,
+                        }}
+                      ></p>
+                    </ReadMore>
+                  ) : (
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: anime.description,
+                      }}
+                    ></p>
+                  )} */}
+                  <Scrollbar style={{ height: 170, width: 750 }}
+                  className="drop-shadow-2xl"> 
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: anime.description,
+                      }}
+                    ></p>
+                  </Scrollbar>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div>
+            <div className={`h-[500px] w-[100%] text-gray-400 text-center content-center rounded-bl-[150px] bg-no-repeat bg-center `}
+              style={{ backgroundImage: `linear-gradient(90deg, rgba(18,15,52,1) 0%, rgba(36,36,47,0.75) 45%, rgba(218,218,218,0.1) 100%), url(${Noimage.src}) ` }}
+            >
+              <div className="noimage-header mt-4">
+                <Image
+                  src={anime.coverImage.extraLarge}
+                  alt={anime.title.romaji}
+                  height={450}
+                  width={300}
+                  className="card noimage-cover"
+                />
+                <div className="noimage-info">
+                  <div className="w-[700px] text-left">
+                    <h1>{anime.title.romaji}</h1>
+                    {anime.description.length > 627 ? (
+                      <ReadMore>
+                        {" "}
+                        <p
+                          dangerouslySetInnerHTML={{
+                            __html: anime.description,
+                          }}
+                        ></p>
+                      </ReadMore>
+                    ) : (
+                      <p
+                        dangerouslySetInnerHTML={{
+                          __html: anime.description,
+                        }}
+                      ></p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        )}
       </div>
       <div className="anime-details">
         <div className="flex justify-around mx-[5%] gap-[10%]">
@@ -268,27 +348,27 @@ export default function AnimeDetails() {
               <div className="mt-3 character-list">
                 {showAllCharater
                   ? anime.characters.edges.slice(0, 14).map((character) => (
-                      <div key={character.node.id} className="character-item">
-                        <img
-                          src={character.node.image.large}
-                          alt={character.node.name.full}
-                        />
-                        <p className="font-medium text-gray-600">
-                          {character.node.name.full}
-                        </p>
-                      </div>
-                    ))
+                    <div key={character.node.id} className="character-item">
+                      <img
+                        src={character.node.image.large}
+                        alt={character.node.name.full}
+                      />
+                      <p className="font-medium text-gray-600">
+                        {character.node.name.full}
+                      </p>
+                    </div>
+                  ))
                   : anime.characters.edges.slice(0, 7).map((character) => (
-                      <div key={character.node.id} className="character-item">
-                        <img
-                          src={character.node.image.large}
-                          alt={character.node.name.full}
-                        />
-                        <p className="font-medium text-gray-600">
-                          {character.node.name.full}
-                        </p>
-                      </div>
-                    ))}
+                    <div key={character.node.id} className="character-item">
+                      <img
+                        src={character.node.image.large}
+                        alt={character.node.name.full}
+                      />
+                      <p className="font-medium text-gray-600">
+                        {character.node.name.full}
+                      </p>
+                    </div>
+                  ))}
               </div>
             </div>
             {anime.trailer && (
@@ -322,60 +402,60 @@ export default function AnimeDetails() {
               <div className="mt-3 recommendation-list">
                 {showAllAnime
                   ? anime.recommendations.edges.map((rec) => (
-                      <Link
-                        href={`/item/${rec.node.mediaRecommendation.id}`}
+                    <Link scroll={false}
+                      href={`/item/${rec.node.mediaRecommendation.id}`}
+                      key={rec.node.mediaRecommendation.id}
+                    >
+                      <div
                         key={rec.node.mediaRecommendation.id}
+                        className="rec-item"
                       >
-                        <div
-                          key={rec.node.mediaRecommendation.id}
-                          className="rec-item"
-                        >
-                          <img
-                            src={rec.node.mediaRecommendation.coverImage.large}
-                            alt={rec.node.mediaRecommendation.title.romaji}
-                          />
-                          <p className="text-left mb-3 font-medium text-gray-500">
-                            {rec.node.mediaRecommendation.title.romaji.length >
+                        <img
+                          src={rec.node.mediaRecommendation.coverImage.large}
+                          alt={rec.node.mediaRecommendation.title.romaji}
+                        />
+                        <p className="text-left mb-3 font-medium text-gray-500">
+                          {rec.node.mediaRecommendation.title.romaji.length >
                             17
-                              ? `${rec.node.mediaRecommendation.title.romaji.slice(
-                                  0,
-                                  17
-                                )}...`
-                              : rec.node.mediaRecommendation.title.romaji}
-                          </p>
-                        </div>
-                      </Link>
-                    ))
+                            ? `${rec.node.mediaRecommendation.title.romaji.slice(
+                              0,
+                              17
+                            )}...`
+                            : rec.node.mediaRecommendation.title.romaji}
+                        </p>
+                      </div>
+                    </Link>
+                  ))
                   : anime.recommendations.edges.slice(0, 7).map((rec) => (
-                      <Link
-                        href={`/item/${rec.node.mediaRecommendation.id}`}
+                    <Link scroll={false}
+                      href={`/item/${rec.node.mediaRecommendation.id}`}
+                      key={rec.node.mediaRecommendation.id}
+                    >
+                      <div
                         key={rec.node.mediaRecommendation.id}
+                        className="rec-item"
                       >
-                        <div
-                          key={rec.node.mediaRecommendation.id}
-                          className="rec-item"
-                        >
-                          <img
-                            src={rec.node.mediaRecommendation.coverImage.large}
-                            alt={rec.node.mediaRecommendation.title.romaji}
-                          />
-                          <p className="text-left mb-3 font-medium text-gray-500">
-                            {rec.node.mediaRecommendation.title.romaji.length >
+                        <img
+                          src={rec.node.mediaRecommendation.coverImage.large}
+                          alt={rec.node.mediaRecommendation.title.romaji}
+                        />
+                        <p className="text-left mb-3 font-medium text-gray-500">
+                          {rec.node.mediaRecommendation.title.romaji.length >
                             17
-                              ? `${rec.node.mediaRecommendation.title.romaji.slice(
-                                  0,
-                                  17
-                                )}...`
-                              : rec.node.mediaRecommendation.title.romaji}
-                          </p>
-                        </div>
-                      </Link>
-                    ))}
+                            ? `${rec.node.mediaRecommendation.title.romaji.slice(
+                              0,
+                              17
+                            )}...`
+                            : rec.node.mediaRecommendation.title.romaji}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
               </div>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

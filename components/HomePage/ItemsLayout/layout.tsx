@@ -47,12 +47,11 @@ const DisplayAnime: React.FC<DisplayAnimeProps> = ({ topic, name }) => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    // Fetch the data from the API
     const fetchData = async () => {
       try {
         const response = await fetch("/api/home");
         const json: ApiResponse = await response.json();
-        setTrendingAnime(json.data[name].media.slice(0, 6) || []);
+        setTrendingAnime(json.data[name]?.media.slice(0, 6) || []);
       } catch (error) {
         console.error("Error fetching anime data:", error);
       } finally {
@@ -63,77 +62,53 @@ const DisplayAnime: React.FC<DisplayAnimeProps> = ({ topic, name }) => {
     fetchData();
   }, [name]);
 
-  if (loading) {
-    return (
-      <div className="loading-container">
-        <div className="spinner"></div>
-        <p>Loading...</p>
-      </div>
-    );
-  }
-
   return (
     <div className="mx-32 my-20">
       <div className="flex justify-between py-3">
         <h2 className="text-[20px] font-semibold">{topic}</h2>
-        <a href="#" className="text-slate-500 hover:text-slate-700 font-semibold">
+        <Link href="#" className="text-slate-500 hover:text-slate-700 font-semibold">
           View All
-        </a>
+        </Link>
       </div>
       <div className="grid grid-cols-6 gap-10">
-        {trendingAnime.map((anime) => (
-          // <Link href={`/itemDetail/${anime.id}`} key={anime.id}>
-          <Link href={`/item/${anime.id}`} key={anime.id}>
-            <div
-              style={
-                {
-                  "--anime-color": HexToRGBA(
-                    anime.coverImage.color || "#fff",
-                    0.75
-                  ),
-                } as React.CSSProperties
-              }
-              className="group relative aspect-[10/14] w-full rounded-box overflow-hidden"
-            >
-              <Image
-                src={anime.coverImage.extraLarge}
-                alt={anime.title.english || anime.title.romaji}
-                fill
-                sizes="50vw"
-                className="object-cover group-hover:scale-105 transition-all duration-300 w-full h-full "
-              />
-              <div className="absolute opacity-0 inset-0 bg-[var(--anime-color)] group-hover:opacity-100 backdrop-blur-md transition-all duration-300 flex items-center justify-center p-5">
-                <p
-                style={{ textShadow: "0 0 10px oklch(var(--bc))" }} 
-                className="text-neutral-content text-center font-bold">
-                  {anime.title.english || anime.title.romaji}
-                </p>
-              </div>
-            </div>
-
-            {/* <div className="trending-item-wrapper w-52">
+        {loading ? (
+          // Show loading skeletons while data is being fetched
+          Array.from({ length: 6 }).map((_, index) => (
+            <div key={index} className="skeleton h-[250px] w-[180px] bg-gray-300 rounded-md"></div>
+          ))
+        ) : (
+          trendingAnime.map((anime) => (
+            <Link href={`/item/${anime.id}`} key={anime.id} scroll={false}>
               <div
-                className="trending-item"
                 style={
                   {
-                    "--hover-color": anime.coverImage.color || "#ffffff",
+                    "--anime-color": HexToRGBA(
+                      anime.coverImage.color || "#fff",
+                      0.75
+                    ),
                   } as React.CSSProperties
                 }
+                className="group relative aspect-[10/14] w-full rounded-box overflow-hidden"
               >
                 <Image
                   src={anime.coverImage.extraLarge}
                   alt={anime.title.english || anime.title.romaji}
-                  width={190}
-                  height={280}
+                  fill
                   sizes="50vw"
-                  style={{ objectFit: "cover" }}
-                  className="item-image hover:bg-blue-200"
+                  className="object-cover group-hover:scale-105 transition-all duration-300 w-full h-full"
                 />
-                <p className="item-title">{anime.title.romaji.slice(0, 30)}</p>
+                <div className="absolute opacity-0 inset-0 bg-[var(--anime-color)] group-hover:opacity-100 backdrop-blur-md transition-all duration-300 flex items-center justify-center p-5">
+                  <p
+                    style={{ textShadow: "0 0 10px rgba(0, 0, 0, 0.5)" }}
+                    className="text-neutral-content text-center font-bold"
+                  >
+                    {anime.title.english || anime.title.romaji}
+                  </p>
+                </div>
               </div>
-            </div> */}
-          </Link>
-        ))}
+            </Link>
+          ))
+        )}
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ export async function GET(
   req: Request,
   { params }: { params: { animeId: string } }
 ) {
-  const { animeId } = params;
+  const { animeId } = await params;
 
   const query = gql`
     query ($id: Int) {

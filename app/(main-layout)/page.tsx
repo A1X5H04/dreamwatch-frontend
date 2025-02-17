@@ -8,7 +8,7 @@ async function HomePage() {
   const session = await auth();
   return (
     <>
-    <div className="">
+    <div className="">  
       <SlideShow />
       {/* <BannerAnime /> */}
 

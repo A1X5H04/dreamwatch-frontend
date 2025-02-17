@@ -18,7 +18,7 @@ function DropNavbar({children}) {
   }, []);
 
   return (
-    <nav className={`navbar ${isTransparent ? 'transparent' : ''}`}> 
+    <nav className={`navbar ${isTransparent ? 'transparent' : ''} absolute`}> 
       {children}
     </nav>
   );
